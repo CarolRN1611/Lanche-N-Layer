@@ -81,7 +81,7 @@ public class Console {
                 System.out.println(produtoImagem);
                 if (produtoImagem != null) {
                     boolean feito = produtoService.removerImagem(produtoImagem);
-                    System.out.println(feito);
+                    
                     if (feito) {
                         System.out.println("Imagem removida com sucesso!");
                     } else {
