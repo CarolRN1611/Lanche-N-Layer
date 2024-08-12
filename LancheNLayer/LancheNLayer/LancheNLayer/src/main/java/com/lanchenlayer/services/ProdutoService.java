@@ -42,16 +42,13 @@ public class ProdutoService {
         Path pathImagem = Paths.get(caminhoDestino, String.format("%d.%s", produto.getId(), getFileExtension(produto.getImagem())));
 
         try {
-            System.out.println("1");
             if (Files.exists(pathImagem)) {
-                System.out.println("2");
                 Files.delete(pathImagem);
                 return true;
             } else {
                 return false;
             }
         } catch (IOException e) {
-            System.out.println("3");
             e.printStackTrace();
             return false;
         }
