@@ -10,6 +10,9 @@ public class ProdutoRepositoryMySql  implements IProdutoRepository {
     public void adicionar(Produto produto) {
 
     }
+    @Override
+    private Produto filtrarProduto(int id){
+    }
 
     @Override
     public void atualizar(Produto produto, int index) {
