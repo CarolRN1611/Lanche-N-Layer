@@ -11,9 +11,16 @@ public class ProdutoRepository implements IProdutoRepository {
     public void adicionar(Produto produto) {
         produtos.add(produto);
     }
-    public void atualizar(Produto produto,int index){
-        produtos.set(index,produto);
+     private Produto filtrarProduto(int id){
+        return produtos.stream().filter(p -> p.getId() == id).findFirst().get();
+    }
 
+    public void atualizar(Produto produto,int index){
+        Produto produtoEmDb = filtrarProduto(index);
+
+       produtoEmDb.setDescricao(produto.getDescricao());
+       produtoEmDb.setImagem(produto.getImagem());
+       produtoEmDb.setValor(produto.getValor());
     }
 
     public void remover(int id) {
@@ -21,7 +28,7 @@ public class ProdutoRepository implements IProdutoRepository {
     }
 
     public Produto buscarPorId(int id) {
-        Produto produtoInDb = produtos.stream().filter(p -> p.getId() == id).findFirst().get();
+        Produto produtoInDb = filtrarProduto(int id);
 
         return produtoInDb;
     }
