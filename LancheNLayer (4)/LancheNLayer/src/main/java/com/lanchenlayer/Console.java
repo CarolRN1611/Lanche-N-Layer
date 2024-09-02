@@ -40,6 +40,7 @@ public class Console {
             System.out.println("2-Fazer Venda");
             System.out.println("3-Remover imagem");
             System.out.println("4-Atualizar imagem");
+            System.out.println("5-Atualizar Informações do Produto");
             System.out.println("Qualquer outra tecla para sair");
 
             int resposta = scanner.nextInt();
@@ -117,7 +118,32 @@ public class Console {
                 } else {
                     System.out.println("Produto não encontrado.");
                 }
-                } else {
+                 }else if (resposta == 5) {
+                System.out.println("Informe o codigo do produto que deseja atualizar");
+                int codigo = scanner.nextInt();
+                scanner.nextLine();
+
+                if(produtoFacade.buscarPorId(codigo) != null) {
+
+                    System.out.println("Informe o nome do produto");
+                    String descricao = scanner.nextLine();
+
+                    System.out.println("Informe o caminho da imagem do produto");
+                    String imagem = scanner.nextLine();
+
+                    System.out.println("Informe o preço do produto");
+                    float preco = scanner.nextFloat();
+                    scanner.nextLine();
+
+                    Produto p = new Produto(codigo, descricao, preco, imagem);
+
+                    produtoFacade.atualizar(p, codigo);
+                    System.out.println("produto cadastrado com sucesso!");
+                }else{
+                    System.out.println("codigo invalido!");
+                }
+            }
+            else {
                 sair = true;
             }
         }
